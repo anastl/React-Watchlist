@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Link, Routes, Route } from 'react-router-dom'
 import Movies from "./Routes/Movies"
 import Series from "./Routes/Series"
 import SelectionPage from "./Routes/SelectionPage"
@@ -12,11 +12,11 @@ function App() {
       <Link to="/movies">Movies</Link>
       <Link to="/series">Series</Link>
 
-      <Switch>
+      <Routes>
         <Route exact path='/' element= { <SelectionPage />} />
         <Route path='movies' element={ <Movies /> } />
         <Route path='series' element={ <Series /> } />
-    </Switch>
+      </Routes>
     </nav>
   )
 }
