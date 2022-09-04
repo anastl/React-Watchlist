@@ -1,62 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;600&display=swap');
+
+/*
+  WORKING FOR 600PX AND BIGGER
+  WILL MAKE RESPONSIVE AFTER FINE-TUNING DETAILS WITH REACT
+*/
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /* color-scheme: light dark; */
+
+  --nav-light-color: #d74d6f;
+  --nav-dark-color: #145045;
+
+  --accent-text-lvl-1-light-color: #eacbc4;
+  --accent-text-lvl-1-dark-color: #70a9ad;
+
+  --accent-text-lvl-2-light-color: #f4dfe1;
+  --accent-text-lvl-2-dark-color: #1f6f71;
+
+  --accent-text-lvl-3-light-color: #d6888f;
+  --accent-text-lvl-3-dark-color: #144e4f;
+
+
+  
+  --nav-light-color--lower-opacity: rgb(215, 77, 111, .5);
+  --nav-dark-color--lower-opacity: rgb(20, 80, 69, 5);
+
+  --accent-text-lvl-1-light-color--lower-opacity: rgb(234, 203, 196, .5);
+  --accent-text-lvl-1-dark-color--lower-opacity: rgb(112, 169, 173, .5);
+
+  --accent-text-lvl-2-light-color--lower-opacity: rgb(244, 223, 225, .5);
+  --accent-text-lvl-2-dark-color--lower-opacity: rgb(31, 111, 113, .5);
+
+  --accent-text-lvl-3-light-color--lower-opacity: rgb(214, 136, 143, .5);
+  --accent-text-lvl-3-dark-color--lower-opacity: rgb(20, 78, 79, .5);
+
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+nav {
+  background-color: var(--nav-light-color);
+  color: var(--accent-text-lvl-2-light-color);
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-evenly;
+  padding: .3rem 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-text-lvl-1-light-color);
+  font-weight: 500;
+}
+
+form {
+  display: grid;
+  grid-template-areas: "input button";
+  grid-template-columns: auto min-content;
+  grid-gap: .5rem;
+}
+
+input {
+  border: transparent solid 1px;
+  border-radius: 8px;
+  grid-area: input;
+  font-size: 1.1rem;
+  padding: .3em 1em;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+input:focus,
+input:focus-visible {
+  outline: 4px auto var(--nav-light-color);
 }
 
 button {
+  background-color: var(--nav-light-color);
+  color: var(--accent-text-lvl-2-light-color);
+  font-family: 'Montserrat', sans-serif;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.6rem 1.2rem;
+
+  font-size: 1rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  align-self: center;
+  grid-area: button;
+  
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent-text-lvl-1-light-color);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto var(--accent-text-lvl-2-light-color);
 }
 
-@media (prefers-color-scheme: light) {
+/* START TYPOGRAPHY */
+.title {
+  margin: 0;
+}
+/* END TYPOGRAPHY */
+
+/* START SEARCH AREA */
+.search--area {
+  margin: 1rem 0;
+  padding: .5rem;
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+}
+
+.search.title {
+  font-family: 'Oswald', sans-serif;
+  align-self: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* END SEARCH AREA */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--accent-text-lvl-3-light-color--lower-opacity);
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -67,4 +150,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
