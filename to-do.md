@@ -1,4 +1,4 @@
-###To-Do
+##To-Do
 - [] fix css for small devices
 - [] add radio button to select language
 - [] add radio button to select mode (light / dark)
