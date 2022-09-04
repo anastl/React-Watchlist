@@ -14,7 +14,8 @@
   --accent-text-lvl-1-light-color: #eacbc4;
   --accent-text-lvl-1-dark-color: #70a9ad;
 
-  --accent-text-lvl-2-light-color: #f4dfe1;
+  --accent-text-lvl-2-light-color: #f5e8ea;
+  /* --accent-text-lvl-2-light-color: #f4dfe1; */
   --accent-text-lvl-2-dark-color: #1f6f71;
 
   --accent-text-lvl-3-light-color: #d6888f;
@@ -46,7 +47,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
@@ -57,7 +58,7 @@ img {
 
 nav {
   background-color: var(--nav-light-color);
-  color: var(--accent-text-lvl-2-light-color);
+  color: #144e4f;
   font-size: 1.8rem;
   display: flex;
   justify-content: space-evenly;
@@ -66,7 +67,7 @@ nav {
 
 a {
   text-decoration: none;
-  color: var(--accent-text-lvl-1-light-color);
+  color: var(--accent-text-lvl-2-light-color);
   font-weight: 500;
 }
 
@@ -142,9 +143,10 @@ button:focus-visible {
 
 .container {
   max-width: 800px; /*make width bigger before pushing for production*/
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: .2rem .8rem;
-  border-radius: 8px;
+  height: 100%;
+  /* border-radius: 8px; */
   background-color: var(--accent-text-lvl-3-light-color--lower-opacity);
 }
 
