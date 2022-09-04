@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;500;600&display=swap');
 
 /*
   WORKING FOR 600PX AND BIGGER
@@ -20,7 +20,6 @@
   --accent-text-lvl-3-light-color: #d6888f;
   --accent-text-lvl-3-dark-color: #144e4f;
 
-
   
   --nav-light-color--lower-opacity: rgb(215, 77, 111, .5);
   --nav-dark-color--lower-opacity: rgb(20, 80, 69, 5);
@@ -34,7 +33,10 @@
   --accent-text-lvl-3-light-color--lower-opacity: rgb(214, 136, 143, .5);
   --accent-text-lvl-3-dark-color--lower-opacity: rgb(20, 78, 79, .5);
 
-  font-family: 'Montserrat', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+  --font-monserrat: 'Montserrat', sans-serif;
+
+  font-family: var(--font-monserrat);
   font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -47,6 +49,10 @@
 body {
   margin: 0;
   padding: 0;
+}
+
+img {
+  max-width: 100%;
 }
 
 nav {
@@ -110,7 +116,8 @@ button:focus-visible {
 }
 
 /* START TYPOGRAPHY */
-.title {
+.title,
+.p {
   margin: 0;
 }
 /* END TYPOGRAPHY */
@@ -125,7 +132,7 @@ button:focus-visible {
 }
 
 .search.title {
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-oswald);
   align-self: center;
   text-transform: uppercase;
   font-weight: 600;
@@ -134,10 +141,93 @@ button:focus-visible {
 /* END SEARCH AREA */
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px; /*make width bigger before pushing for production*/
+  margin: 1rem auto;
+  padding: .2rem .8rem;
+  border-radius: 8px;
   background-color: var(--accent-text-lvl-3-light-color--lower-opacity);
 }
+
+/* START MOVIE CARD AREA*/
+.movie-card {
+  background: var(--accent-text-lvl-2-light-color);
+  padding: 1.6rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: stretch;
+  margin: .25rem 0;
+  gap: 1.5rem;
+}
+
+.poster-image {
+  order: 1;
+  max-height: 500px;
+}
+
+  /* start movie-info sub-area */
+
+.movie-info {
+  order: 2;
+  display: grid;
+  grid-template-areas: 
+    'title title . year'
+    'rating rating rating rating'
+    'summary summary summary summary'
+    'genres genres genres genres'
+    '. moreBtn addBtn .';
+  place-items: center;
+  padding: 0 1rem .5rem;
+  border: 1px solid #000;
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+.genres {
+  grid-area: genres;
+  justify-self: left;
+  opacity: .8;
+}
+
+.card-title {
+  grid-area: title;
+  font-size: 2rem;
+  font-family: var(--font-oswald);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .3px;
+  /* text-align: center; */
+}
+
+.date {
+  grid-area: year;
+  font-style: italic;
+}
+
+.rating-info {
+  grid-area: rating;
+  margin-top: .5rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: .2rem;
+}
+
+.small,
+.material-symbols-outlined {
+  font-size: .9rem;
+}
+
+.summary {
+  grid-area: summary;
+  line-height: 1.7;
+  letter-spacing: .4px;
+  /* align-self: center; */
+  /* margin-top: 1rem; */
+}
+  /* end movie-info sub-area */
+
+/* END MOVIE CARD AREA*/
 
 /* @media (prefers-color-scheme: light) {
   :root {
