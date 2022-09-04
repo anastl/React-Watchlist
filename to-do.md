@@ -1,5 +1,7 @@
 ##To-Do
 - [ ] fix css for small devices
+- [ ] fix css for tablets
+- [ ] fix css for large screens
 - [ ] add radio button to select language
 - [ ] add radio button to select mode (light / dark)
 - [ ] useContext to fix color mode
