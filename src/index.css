@@ -176,7 +176,7 @@ button:focus-visible {
     'rating rating rating rating'
     'summary summary summary summary'
     'genres genres genres genres'
-    '. moreBtn addBtn .';
+    'btn btn btn btn';
   place-items: center;
   padding: 0 1rem .5rem;
   border: 1px solid #000;
@@ -226,6 +226,10 @@ button:focus-visible {
   letter-spacing: .4px;
   /* align-self: center; */
   /* margin-top: 1rem; */
+}
+
+.buttons-container {
+  grid-area: btn;
 }
   /* end movie-info sub-area */
 
