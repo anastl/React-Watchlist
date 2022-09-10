@@ -5,10 +5,10 @@
 - [ ] add radio button to select language
 - [ ] add radio button to select mode (light / dark)
 - [ ] useContext to fix color mode
-- [ ] add "Add to watchlist button"
-- [ ] add "Show more button"
-- [ ] build expanded movie component (find good name for it)
-- [ ] fix routes based on movies ids
-- [ ] build series page
-- [ ] refactor logic for DRYness
-- [ ] build MyWatchlist page 
+- [x] add "Add to watchlist button"
+- [x] add "Show more button"
+- [x] build expanded movie component (find good name for it)
+- [x] fix routes based on movies ids
+- [x] refactor logic for DRYness
+- [x] build MyWatchlist page 
+- [ ] return the buttons in the last part of the details component
