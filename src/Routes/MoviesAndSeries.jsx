@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
+import { Link } from "react-router-dom"
 import Media from "../Components/Media"
 import { Context } from "../Context/watchlistContext"
 
@@ -35,14 +36,14 @@ export default function MoviesAndSeries() {
 
                     mediaArray.push(
                         <Media 
-                            key={id}
-                            id={id}
-                            src={poster_path}
-                            title={title || name}
-                            release_date={release_date || first_air_date}
-                            summary={overview}
-                            genres={mediaGenres}
-                            rating={vote_average}
+                        key={id} 
+                        id={id}
+                        src={poster_path}
+                        title={title || name}
+                        release_date={release_date || first_air_date}
+                        summary={overview}
+                        genres={mediaGenres}
+                        rating={vote_average}
                         />
                     )
 

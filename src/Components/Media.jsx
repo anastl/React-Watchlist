@@ -1,8 +1,10 @@
 import React, { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { Context } from "../Context/watchlistContext"
 
 export default function Media( props ) {
     const { deleteElement, addElement, isInWatchlist } = useContext(Context)
+    const navigate = useNavigate()
     const {title,
            id,
            src,
@@ -31,10 +33,16 @@ export default function Media( props ) {
                 <p className="p small genres">{ genres }</p>
                 <div className="buttons-container">
                     { isInWatchlist(id) ? deleteMovieBtn : addMovieBtn  }
-                    {/* <button onClick={ display more info abt the movie }>Show more</button> */}
+                    <button 
+                    className="show-more-a" 
+                    onClick={() => navigate(`/search/${id}`)}
+                    >
+                        Show more
+                    </button>
                 </div>
             </div>
-            <img className="poster-image" alt="" src={imgSrc} />
+            <img className="poster-image" alt="" src={imgSrc} />                             
+
         </div>
     )
 }

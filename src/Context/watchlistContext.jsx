@@ -29,7 +29,7 @@ function ContextProvider ( { children } ) {
     }
     
     function addElement ( Obj ) {
-        setWatchlist( prevWatchlist => [...prevWatchlist, Obj] )
+        { Obj.id && setWatchlist( prevWatchlist => [...prevWatchlist, Obj] ) }
     }
 
     function isInWatchlist( id ) {

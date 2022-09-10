@@ -100,6 +100,7 @@ input[type="text"]:focus-visible {
 button {
   background-color: var(--nav-light-color);
   color: var(--accent-text-lvl-2-light-color);
+  box-shadow: .2em .3em .4em var(--accent-text-lvl-1-light-color);
   font-family: 'Montserrat', sans-serif;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -111,10 +112,12 @@ button {
   grid-area: button;
   
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, transform 0.4s;
+  transform: scale(1);
 }
 button:hover {
   border-color: var(--accent-text-lvl-1-light-color);
+  transform: scale(1.1);
 }
 button:focus,
 button:focus-visible {
@@ -203,8 +206,14 @@ button:focus-visible {
 
 /* TYPOGRAPHY */
 .title,
-.p {
+h1,
+h3,
+p {
   margin: 0;
+}
+.small,
+.material-symbols-outlined {
+  font-size: .9rem;
 }
 /* END TYPOGRAPHY */
 
@@ -293,11 +302,6 @@ button:focus-visible {
   gap: .2rem;
 }
 
-.small,
-.material-symbols-outlined {
-  font-size: .9rem;
-}
-
 .summary {
   grid-area: summary;
   line-height: 1.7;
@@ -336,6 +340,107 @@ button:focus-visible {
   font-weight: 600;
   text-transform: lowercase;
 }
+
+/* DETAILED MOVIE */
+.movie--details-page {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media--detailed {
+  background-color: var(--accent-text-lvl-2-light-color);
+  color: var(--nav-light-color--darker);
+  border-radius: 16px;
+  padding: 1rem;
+  display: grid;
+  gap: .5rem;
+  place-items: center;
+  grid-template-areas: 
+  'back_btn . . .'
+  'det_img det_img title det_rating'
+  'det_img det_img tagline tagline'
+  'det_img det_img rel_date website'
+  'det_img det_img budget revenue'
+  'det_img det_img genres runtime'
+  'summary summary summary summary'
+  'languaje languaje production production'
+  'languaje languaje production production'
+  '. button button .';
+}
+
+.back-btn {
+  grid-area: back_btn;
+  justify-self: start;
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  box-shadow: .2em .3em .6em var(--accent-text-lvl-3-light-color);
+}
+.back-btn>span {
+  margin-right: .5rem;
+}
+.movie--poster {
+  grid-area: det_img;
+}
+.movie--title {
+  grid-area: title;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+  justify-self: right;
+}
+.movie--tagline {
+  grid-area: tagline;
+  font-style: italic;
+}
+.movie--website--container {
+  grid-area: website;
+}
+.movie--website--container>a {
+  color: var(--nav-light-color--darker);
+  display: flex;
+  align-items: center;
+  gap: .2em;
+}
+.movie--rating-container {
+  grid-area: det_rating;
+  display: flex;
+  align-items: center;
+}
+.movie--rating-container>p{
+  font-size: .8rem;
+}
+.runtime {
+  grid-area: runtime;
+}
+.budget {
+  grid-area: budget;
+}
+.revenue {
+  grid-area: revenue;
+}
+.rel_date {
+  grid-area: rel_date;
+}
+.genres {
+  grid-area: genres;
+  text-align: center;
+  opacity: 1;
+}
+.movie--details {
+  padding: .5rem 0;
+  grid-area: summary;
+  text-align: justify;
+}
+.details_button {
+  grid-area: button;
+}
+/* END DETAILED MOVIE */
 
 /* @media (prefers-color-scheme: light) {
   :root {
