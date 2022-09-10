@@ -11,6 +11,9 @@
   --nav-light-color: #d74d6f;
   --nav-dark-color: #145045;
 
+  --nav-light-color--darker: #a03a54;
+  --nav-dark-color--darker: #0c2f28;
+
   --accent-text-lvl-1-light-color: #eacbc4;
   --accent-text-lvl-1-dark-color: #70a9ad;
 
@@ -50,6 +53,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
+background-color: var(--accent-text-lvl-1-light-color);
 }
 
 img {
@@ -58,7 +63,6 @@ img {
 
 nav {
   background-color: var(--nav-light-color);
-  color: #144e4f;
   font-size: 1.8rem;
   display: flex;
   justify-content: space-evenly;
@@ -72,23 +76,24 @@ a {
 }
 
 form {
-  display: grid;
-  grid-template-areas: "input button";
-  grid-template-columns: auto min-content;
-  grid-gap: .5rem;
+  display: flex;
+  justify-content: space-around;
 }
 
-input {
+input[type="text"] {
   border: transparent solid 1px;
   border-radius: 8px;
   grid-area: input;
+  height: 100%;
+  width: 100%;
   font-size: 1.1rem;
   padding: .3em 1em;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-input:focus,
-input:focus-visible {
+
+input[type="text"]:focus,
+input[type="text"]:focus-visible {
   outline: 4px auto var(--nav-light-color);
 }
 
@@ -101,7 +106,7 @@ button {
   padding: 0.6rem 1.2rem;
 
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   align-self: center;
   grid-area: button;
   
@@ -116,7 +121,87 @@ button:focus-visible {
   outline: 4px auto var(--accent-text-lvl-2-light-color);
 }
 
-/* START TYPOGRAPHY */
+/* CONTAINERS */
+.container {
+  margin: 0 auto;
+  padding: .5rem .8rem;
+  text-align: center;
+  /* border-radius: 8px; */
+}
+
+.form-container {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-areas: "slider input button" ;
+  grid-template-columns: 10rem auto min-content;
+  grid-gap: .5rem;
+  place-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+/* END CONTAINERS */
+
+/* SLIDER */
+.slider-label {
+  grid-area: slider;
+  display: grid;
+  grid-template-areas: 'slider media_type';
+  grid-template-columns: 4rem 6rem;
+  gap: .25rem;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-right: .25rem;
+}
+
+.media-type {
+  position: relative;
+  grid-area: media_type;
+  place-self: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0em .2em .2em var(--nav-light-color--lower-opacity);
+}
+
+.slider {
+  grid-area: slider;
+  align-self: center;
+  width: 4rem;
+  height: 2.3rem;
+  cursor: pointer;
+  position: absolute;
+  background-color: var(--nav-light-color);
+  border-radius: 8px;
+  transition: .4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  width: 1.7rem;
+  height: 1.7rem;
+  top: .3rem;
+  left: .3rem;
+  background-color: var(--accent-text-lvl-2-light-color);
+  transition: .4s;
+}
+
+.input-checkbox[type="checkbox"]:checked + .slider::before {
+  transform: translateX(1.7rem);
+  background-color: var(--nav-light-color);
+}
+
+.input-checkbox[type="checkbox"]:checked + .slider {
+  background-color: var(--accent-text-lvl-2-light-color);
+}
+
+.input-checkbox {
+  display: none;
+}
+/* END SLIDER */
+
+/* TYPOGRAPHY */
 .title,
 .p {
   margin: 0;
@@ -125,30 +210,22 @@ button:focus-visible {
 
 /* START SEARCH AREA */
 .search--area {
-  margin: 1rem 0;
-  padding: .5rem;
+  margin: 0;
+  padding: 1.5rem .5rem;
   display: flex;
   gap: .5rem;
   flex-direction: column;
+  background-color: var(--accent-text-lvl-3-light-color--lower-opacity);
 }
 
 .search.title {
   font-family: var(--font-oswald);
   align-self: center;
   text-transform: uppercase;
+  text-shadow: .2em .2em .3em var(--accent-text-lvl-2-light-color);
   font-weight: 600;
 }
-
 /* END SEARCH AREA */
-
-.container {
-  max-width: 800px; /*make width bigger before pushing for production*/
-  margin: 0 auto;
-  padding: .2rem .8rem;
-  height: 100%;
-  /* border-radius: 8px; */
-  background-color: var(--accent-text-lvl-3-light-color--lower-opacity);
-}
 
 /* START MOVIE CARD AREA*/
 .movie-card {
@@ -156,7 +233,7 @@ button:focus-visible {
   padding: 1.6rem;
   border-radius: 8px;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   margin: .25rem 0;
   gap: 1.5rem;
 }
@@ -179,8 +256,8 @@ button:focus-visible {
     'btn btn btn btn';
   place-items: center;
   padding: 0 1rem .5rem;
-  border: 1px solid #000;
-  /* flex-direction: column;
+  /* border: 1px solid #000;
+  flex-direction: column;
   align-items: center;
   justify-content: center; */
 }
@@ -189,6 +266,7 @@ button:focus-visible {
   grid-area: genres;
   justify-self: left;
   opacity: .8;
+  margin: .2rem 0 .3rem;
 }
 
 .card-title {
@@ -224,16 +302,40 @@ button:focus-visible {
   grid-area: summary;
   line-height: 1.7;
   letter-spacing: .4px;
+  margin: .5rem 0;
   /* align-self: center; */
   /* margin-top: 1rem; */
 }
 
 .buttons-container {
+  margin-top: .3rem;
   grid-area: btn;
 }
   /* end movie-info sub-area */
 
 /* END MOVIE CARD AREA*/
+
+.watchlist--no-content{
+  padding: 2.5em;
+}
+
+.description{
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.watchlist--redirect{
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.3rem;
+}
+
+.watchlist--redirect-a {
+  color: var(--nav-light-color);
+  font-weight: 600;
+  text-transform: lowercase;
+}
 
 /* @media (prefers-color-scheme: light) {
   :root {

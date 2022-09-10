@@ -18,14 +18,18 @@ function ContextProvider ( { children } ) {
         getGenreList()
     }, [] )
 
+    useEffect( () => {
+        localStorage.clear()
+        localStorage.setItem( 'watchlist', JSON.stringify( watchList ) )
+    }, [watchList] )
+
+    
     function deleteElement( id ) {
         setWatchlist( prevWatchlist => prevWatchlist.filter( currElem => currElem.id !== id ) )
-        localStorage.setItem( 'watchlist', JSON.stringify( watchList ) )
     }
-
+    
     function addElement ( Obj ) {
         setWatchlist( prevWatchlist => [...prevWatchlist, Obj] )
-        localStorage.setItem( 'watchlist', JSON.stringify( watchList ) )
     }
 
     function isInWatchlist( id ) {

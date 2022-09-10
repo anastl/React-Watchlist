@@ -44,10 +44,9 @@ export default function Movies() {
                         />
                     )
                 }
-    
                 return movieArray
             }, [] )
-    
+
             setMovies( allMovies )
         }
         catch (e) { console.log(e) }

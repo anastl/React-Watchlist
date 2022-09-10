@@ -12,7 +12,7 @@ export default function Media( props ) {
            rating} = props
 
     const imgSrc = `https://image.tmdb.org/t/p/original${src}`
-    const nemSummary = summary.slice(0, 400) === summary ? summary : summary.slice(0, 200)+"..."
+    const newSummary = summary.slice(0, 400) === summary ? summary : summary.slice(0, 397)+"..."
     const [year, ...trash] = release_date.split('-')
 
     const addMovieBtn = <button onClick={ () => addElement( props ) } >Add to watchlist</button>
@@ -25,9 +25,9 @@ export default function Media( props ) {
                 <p className="p small date">{ year }</p>
                 <div className="rating-info">
                     <span className="material-symbols-outlined">star</span>
-                    <p className="p small">{ rating }</p>
+                    <p className="p small">{ rating }/10</p>
                 </div>
-                <p className="p summary">{ nemSummary }</p>
+                <p className="p summary">{ newSummary }</p>
                 <p className="p small genres">{ genres }</p>
                 <div className="buttons-container">
                     { isInWatchlist(id) ? deleteMovieBtn : addMovieBtn  }

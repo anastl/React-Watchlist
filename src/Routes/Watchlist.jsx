@@ -1,9 +1,10 @@
 import React, { useContext } from "react"
 import Media from "../Components/Media"
 import { Context } from "../Context/watchlistContext"
+import { Link } from 'react-router-dom'
 
 export default function Watchlist() {
-    const { watchList } = useContext(Context)
+    const { watchList } = useContext( Context )
 
     const movies = watchList.map( movieObj => {
         const {id,
@@ -32,7 +33,13 @@ export default function Watchlist() {
     } )
 
     const moviesPlaceholder = (
-        <h2>No movies or series have been added to your watchlist</h2>
+        <div className="watchlist--no-content">
+            <p className="p description">No movies or series have been added to your watchlist</p>
+            <div className="watchlist--redirect">
+                Try <Link className="watchlist--redirect-a" to="/search">adding</Link> movies or 
+                series and they'll appear here!
+            </div>
+        </div>
     )
 
     return (
