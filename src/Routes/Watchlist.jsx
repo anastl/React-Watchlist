@@ -34,10 +34,10 @@ export default function Watchlist() {
 
     const moviesPlaceholder = (
         <div className="watchlist--no-content">
-            <p className="p description">No movies or series have been added to your watchlist</p>
+            <p className="p description">No movies or tv shows have been added to your watchlist</p>
             <div className="watchlist--redirect">
                 Try <Link className="watchlist--redirect-a" to="/search">adding</Link> movies or 
-                series and they'll appear here!
+                tv shows and they'll appear here!
             </div>
         </div>
     )

@@ -12,6 +12,7 @@
   --nav-dark-color: #145045;
 
   --nav-light-color--darker: #a03a54;
+  --nav-light-color--darker--lower-opacity: rgb(160, 58, 84, .5);
   --nav-dark-color--darker: #0c2f28;
 
   --accent-text-lvl-1-light-color: #eacbc4;
@@ -142,72 +143,32 @@ button:focus-visible {
   width: 100%;
   max-width: 800px;
 }
+
+.rating_container {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.website-container>a {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
 /* END CONTAINERS */
 
-/* SLIDER */
-.slider-label {
-  grid-area: slider;
-  display: grid;
-  grid-template-areas: 'slider media_type';
-  grid-template-columns: 4rem 6rem;
-  gap: .25rem;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  margin-right: .25rem;
+/* SHARED FEATURES */
+.details {
+  font-size: .9rem;
+  font-weight: 400;
 }
-
-.media-type {
-  position: relative;
-  grid-area: media_type;
-  place-self: center;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-shadow: 0em .2em .2em var(--nav-light-color--lower-opacity);
-}
-
-.slider {
-  grid-area: slider;
-  align-self: center;
-  width: 4rem;
-  height: 2.3rem;
-  cursor: pointer;
-  position: absolute;
-  background-color: var(--nav-light-color);
-  border-radius: 8px;
-  transition: .4s;
-}
-
-.slider::before {
-  position: absolute;
-  content: '';
-  border-radius: 50%;
-  width: 1.7rem;
-  height: 1.7rem;
-  top: .3rem;
-  left: .3rem;
-  background-color: var(--accent-text-lvl-2-light-color);
-  transition: .4s;
-}
-
-.input-checkbox[type="checkbox"]:checked + .slider::before {
-  transform: translateX(1.7rem);
-  background-color: var(--nav-light-color);
-}
-
-.input-checkbox[type="checkbox"]:checked + .slider {
-  background-color: var(--accent-text-lvl-2-light-color);
-}
-
-.input-checkbox {
-  display: none;
-}
-/* END SLIDER */
+/* END SHARED FEATURES */
 
 /* TYPOGRAPHY */
 .title,
 h1,
 h3,
+h6,
 p {
   margin: 0;
 }
@@ -341,6 +302,18 @@ p {
   text-transform: lowercase;
 }
 
+/* DETAILED LAYOUT */
+.media--details-page {
+  margin: 1.2rem 2rem;
+  padding: 1.1rem 1.2rem;
+  background-color: var(--nav-light-color--darker--lower-opacity);
+  border-radius: 32px;
+  box-shadow: .2rem .3rem .9rem var(--nav-light-color--darker);
+}
+
+/* END DETAILED LAYOUT */
+
+
 /* DETAILED MOVIE */
 .movie--details-page {
   width: 100%;
@@ -353,7 +326,7 @@ p {
 
 .media--detailed {
   background-color: var(--accent-text-lvl-2-light-color);
-  color: var(--nav-light-color--darker);
+  color: var(--nav-light-color--lower-opacity);
   border-radius: 16px;
   padding: 1rem;
   display: grid;
@@ -442,6 +415,151 @@ p {
 }
 /* END DETAILED MOVIE */
 
+/* DETAILED TV SHOW */
+.tv--detailed {
+  display: grid;
+  gap: .5rem;
+  align-items: center;
+  /* grid-template-columns: repeat(5, .9fr); */
+  /* grid-template-columns: max-content max-content max-content 1fr max-content; */
+  grid-template-areas: 
+  'bck_btn bck_btn add_btn add_btn add_btn'
+  'name name name poster  poster'
+  'og_name og_name og_name poster  poster'
+  'tagline tagline tagline poster  poster'
+  'rating runtime website  poster  poster'
+  'status status genres poster  poster'
+  'creator creator episodes episodes seasons'
+  'country f_air_date f_air_date l_air_date l_air_date'
+  'summary summary summary summary summary'
+  'summary summary summary summary summary'
+  'last_ep last_ep last_ep last_ep last_ep'
+  'next_ep next_ep next_ep next_ep next_ep'
+  ;
+}
+.back-btn { grid-area: bck_btn; }
+.tv--poster { grid-area: poster; }
+.tv--rating-container { grid-area: rating; }
+.runtime { grid-area: runtime; }
+.f_air_date { grid-area: f_air_date; }
+.l_air_date { grid-area: l_air_date; }
+.genres { grid-area: genres; }
+.status { grid-area: status; }
+.number-of-episodes { grid-area: episodes; }
+.number-of-seasons { grid-area: seasons; }
+.origin-country { grid-area: country; }
+.details_button { grid-area: add_btn; }
+
+.tv--website--container { 
+  grid-area: website; 
+  justify-self: center;
+}
+
+.tv--title { 
+  grid-area: name; 
+  font-size: 3rem;
+  text-transform: uppercase;
+  justify-self: center;
+}
+
+.tv--tagline { 
+  grid-area: tagline; 
+  font-style: italic;
+  font-weight: 600;
+  justify-self: center;
+}
+
+
+.tv--title--original { 
+  grid-area: og_name; 
+  font-size: .9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: .8;
+  justify-self: right;
+}
+
+.tv--creator-container { 
+  grid-area: creator;
+  display: flex; 
+  align-items: center;
+  gap: .2rem;
+}
+
+.tv--details { 
+  grid-area: summary; 
+  text-align: justify;
+}
+
+.tv--last-episode-container { 
+  grid-area: last_ep; 
+  background-color: var(--nav-light-color--darker);
+  color: var(--accent-text-lvl-2-light-color);
+  padding: 1.5rem 1.1rem;
+  border-radius: 16px;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: max-content 1fr 1fr;
+  grid-template-areas: 
+  'l_banner l_banner l_banner'
+  'l_title l_date l_date'
+  'l_rating l_episode l_season'
+  'l_summary l_summary l_summary'
+  ;
+  place-items: center;
+}
+
+.last-episode-banner { grid-area: l_banner; }
+.last-episode-episode-number { grid-area: l_episode; }
+.last-episode-season-number { grid-area: l_season; }
+.last-episode-rating-container { grid-area: l_rating; }
+.last-episode-air-date { grid-area: l_date; }
+.last-episode-name { 
+  grid-area: l_title; 
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.last-episode-overview { 
+  grid-area: l_summary; 
+  text-align: justify;
+}
+
+.tv--next-episode-container { 
+  grid-area: next_ep; 
+  background-color: var(--accent-text-lvl-2-light-color);
+  color: var(--nav-light-color--darker);
+  padding: 1.5rem 1.1rem;
+  border-radius: 16px;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: max-content 1fr 1fr;
+  grid-template-areas: 
+  'n_banner n_banner n_banner'
+  'n_title n_episode n_season'
+  'n_date n_date n_date'
+  'n_summary n_summary n_summary'
+  ;
+  place-items: center;
+}
+
+.next-episode-banner { grid-area: n_banner; }
+.next-episode-episode-number { grid-area: n_episode; }
+.next-episode-season-number { grid-area: n_season; }
+.next-episode-air-date { grid-area: n_date; }
+.next-episode-name { 
+  grid-area: n_title; 
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.next-episode-overview { 
+  grid-area: n_summary; 
+  text-align: justify;
+}
+
+/* END DETAILED TV SHOW */
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -454,3 +572,65 @@ p {
     background-color: #f9f9f9;
   }
 } */
+
+/************ EXTRAS ************/
+
+/* SLIDER */
+.slider-label {
+  grid-area: slider;
+  display: grid;
+  grid-template-areas: 'slider media_type';
+  grid-template-columns: 4rem 6rem;
+  gap: .25rem;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-right: .25rem;
+}
+
+.media-type {
+  position: relative;
+  grid-area: media_type;
+  place-self: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0em .2em .2em var(--nav-light-color--lower-opacity);
+}
+
+.slider {
+  grid-area: slider;
+  align-self: center;
+  width: 4rem;
+  height: 2.3rem;
+  cursor: pointer;
+  position: absolute;
+  background-color: var(--nav-light-color);
+  border-radius: 8px;
+  transition: .4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  width: 1.7rem;
+  height: 1.7rem;
+  top: .3rem;
+  left: .3rem;
+  background-color: var(--accent-text-lvl-2-light-color);
+  transition: .4s;
+}
+
+.input-checkbox[type="checkbox"]:checked + .slider::before {
+  transform: translateX(1.7rem);
+  background-color: var(--nav-light-color);
+}
+
+.input-checkbox[type="checkbox"]:checked + .slider {
+  background-color: var(--accent-text-lvl-2-light-color);
+}
+
+.input-checkbox {
+  display: none;
+}
+/* END SLIDER */

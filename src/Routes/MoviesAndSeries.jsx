@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from "react"
-import { Link } from "react-router-dom"
+import React, { useState, useContext } from "react"
 import Media from "../Components/Media"
 import { Context } from "../Context/watchlistContext"
 
 export default function MoviesAndSeries() {
-    const { genres } = useContext(Context)
+    const { genres, handleMedia } = useContext(Context)
     const [media, setMedia] = useState([])
     const [query, setQuery] = useState({
         movie: true,
@@ -46,34 +45,6 @@ export default function MoviesAndSeries() {
                         rating={vote_average}
                         />
                     )
-
-                    // if (query.movie) {
-                    //     mediaArray.push(
-                    //         <Media 
-                    //             key={id}
-                    //             id={id}
-                    //             src={poster_path}
-                    //             title={title}
-                    //             release_date={release_date}
-                    //             summary={overview}
-                    //             genres={mediaGenres}
-                    //             rating={vote_average}
-                    //         />
-                    //     )
-                    // } else {
-                    //     mediaArray.push(
-                    //         <Media 
-                    //             key={id}
-                    //             id={id}
-                    //             src={poster_path}
-                    //             title={name}
-                    //             release_date={first_air_date}
-                    //             summary={overview}
-                    //             genres={mediaGenres}
-                    //             rating={vote_average}
-                    //         />
-                    //     )
-                    // }
                 }
     
                 return mediaArray
@@ -92,8 +63,11 @@ export default function MoviesAndSeries() {
                 [name]: type === "checkbox" ? checked : value
             }
         } )
+        if ( type === 'checkbox' ) {
+            const aux = checked ? 'movie' : 'tv'
+            handleMedia( aux )
+        }
     }
-
     
     return (
             <main className="search--area">
