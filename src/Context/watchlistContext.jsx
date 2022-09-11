@@ -3,8 +3,9 @@ const Context = React.createContext()
 
 function ContextProvider ( { children } ) {
     const [watchList, setWatchlist] = useState( JSON.parse( localStorage.getItem('watchlist') ) || [] )
+    const [mediaType, setMediaType] = useState( JSON.parse( localStorage.getItem('mediaType') ) || 'movie')
+    const [searchResults, setSearchResults] = useState( JSON.parse( localStorage.getItem('searchResults') ) || [] )
     const [genres, setGenres] = useState([]) 
-    const [mediaType, setMediaType] = useState('movie')
 
     const genresUrl='https://api.themoviedb.org/3/genre/movie/list?api_key=a549a10218e6b1e84fddfc056a830b2c&language=en-US'
     
@@ -22,7 +23,8 @@ function ContextProvider ( { children } ) {
     useEffect( () => {
         localStorage.clear()
         localStorage.setItem( 'watchlist', JSON.stringify( watchList ) )
-    }, [watchList] )
+        localStorage.setItem( 'mediaType', JSON.stringify( mediaType ) )
+    }, [watchList, mediaType] )
    
     function deleteElement( id ) {
         setWatchlist( prevWatchlist => prevWatchlist.filter( currElem => currElem.id !== id ) )
@@ -40,8 +42,6 @@ function ContextProvider ( { children } ) {
         setMediaType( type )
     }
 
-    console.log(mediaType)
-
     return (
         <Context.Provider 
             value={{ 
@@ -51,7 +51,9 @@ function ContextProvider ( { children } ) {
                 addElement, 
                 isInWatchlist,
                 mediaType,
-                handleMedia 
+                handleMedia,
+                searchResults,
+                setSearchResults
             }}
         >
             { children }

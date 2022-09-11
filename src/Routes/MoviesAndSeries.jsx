@@ -3,10 +3,10 @@ import Media from "../Components/Media"
 import { Context } from "../Context/watchlistContext"
 
 export default function MoviesAndSeries() {
-    const { genres, handleMedia } = useContext(Context)
+    const { genres, mediaType, handleMedia, searchResults, setSearchResults } = useContext(Context)
     const [media, setMedia] = useState([])
     const [query, setQuery] = useState({
-        movie: true,
+        movie: mediaType==='movie' ? true : false,
         mediaName: ''
     })
     const mediaUrl = `https://api.themoviedb.org/3/search/${ query.movie ? 'movie' : 'tv' }?api_key=a549a10218e6b1e84fddfc056a830b2c&language=en-US&query=${ query.mediaName }&include_adult=false`
@@ -51,6 +51,7 @@ export default function MoviesAndSeries() {
             }, [] )
 
             setMedia( allMedia )
+            setSearchResults( allMedia )
         }
         catch (e) { console.log(e) }
     }
@@ -70,11 +71,13 @@ export default function MoviesAndSeries() {
     }
     
     return (
-            <main className="search--area">
-                <h1 className="search title">Search for a { query.movie ? 'movie' : 'tv show'}</h1>
+            <main>
+                <div className="search--area">
+                    <h1 className="search--title">Search for a {query.movie ? 'Movie' : 'Tv Show'}</h1>
                     <form className="form" onSubmit={ (e) => {
                         e.preventDefault()
                         getResults()
+                        setSearchResults([])
                     }}>
                         <div className="form-container">
                             <label className="slider-label" htmlFor="movie">
@@ -99,8 +102,9 @@ export default function MoviesAndSeries() {
                             <button className="button" type="submit">Search</button>
                         </div>
                     </form>
+                </div>
                 <div className="container">
-                    {media}
+                    { searchResults || media }
                 </div>
             </main>
     )

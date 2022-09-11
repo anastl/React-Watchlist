@@ -12,13 +12,13 @@ export default function Media( props ) {
            summary,
            genres,
            rating} = props
-
+    
     const imgSrc = `https://image.tmdb.org/t/p/original${src}`
     const newSummary = summary.slice(0, 400) === summary ? summary : summary.slice(0, 397)+"..."
     const [year, ...trash] = release_date.split('-')
 
-    const addMediaBtn = <button onClick={ () => addElement( props ) } >Add to watchlist</button>
-    const deleteMediaBtn = <button onClick={ () => deleteElement( id ) } >Delete from watchlist</button>
+    const addMediaBtn = <button className="pop-out" onClick={ () => addElement( props ) } >Add to watchlist</button>
+    const deleteMediaBtn = <button className="pop-out" onClick={ () => deleteElement( id ) } >Delete from watchlist</button>
 
     return (
         <div className="media-card">
@@ -30,7 +30,7 @@ export default function Media( props ) {
                     <p className="p small">{ rating }/10</p>
                 </div>
                 <p className="p summary">{ newSummary }</p>
-                <p className="p small genres">{ genres }</p>
+                <p className="p small genres">Genres: { genres }</p>
                 <div className="buttons-container">
                     { isInWatchlist(id) ? deleteMediaBtn : addMediaBtn  }
                     <button 

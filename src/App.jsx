@@ -1,7 +1,7 @@
 import { Link, Routes, Route } from 'react-router-dom'
 import Watchlist from "./Routes/Watchlist"
 import MoviesAndSeries from "./Routes/MoviesAndSeries"
-import DetailedMovie from "./Components/DetailedMovie"
+import DetailedMedia from "./Components/DetailedMedia"
 import './App.css'
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/" element = { <MoviesAndSeries /> } />
         <Route path='watchlist/' element= { <Watchlist />} />
         <Route exact path='search/' element={ <MoviesAndSeries /> } />
-        <Route path='search/:mediaId' element={ <DetailedMovie /> } />
+        <Route path='search/:mediaId' element={ <DetailedMedia /> } />
       </Routes>
     </>
   )
