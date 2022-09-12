@@ -166,6 +166,7 @@ button:focus-visible {
 
 /* START CONTAINERS */
 .container {
+  max-width: 800px;
   margin: 0 auto;
   padding: .5rem .8rem;
   text-align: center;
@@ -211,7 +212,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: .5rem;
-  justify-content: space-evenly;
+  justify-content: center
 }
 
 .pop-out {
@@ -248,7 +249,7 @@ p {
   font-family: var(--font-oswald);
   align-self: center;
   text-transform: uppercase;
-  text-shadow: .2em .2em .3em var(--light-3);
+  text-shadow: 0 0 .3em var(--light-3);
   font-weight: 600;
 }
 /* END SEARCH AREA */
@@ -355,7 +356,8 @@ p {
 
 /* DETAILED LAYOUT */
 .media--details-page {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 800px;
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;

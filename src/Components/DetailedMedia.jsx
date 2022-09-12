@@ -108,7 +108,7 @@ export default function DetailedMedia( props ) {
                         <span className="last-episode-banner">Last episode to be aired</span>
                         <span className="last-episode-name">{last_episode_to_air.name}</span>
                         <span className="last-episode-overview">{last_episode_to_air.overview}</span>
-                        <span className="last-episode-episode-number">Èpisode: {last_episode_to_air.episode_number}</span>
+                        <span className="last-episode-episode-number">Episode: {last_episode_to_air.episode_number}</span>
                         <span className="last-episode-season-number">Season: {last_episode_to_air.season_number}</span>
                         <div className="last-episode-rating-container rating_container">
                             <span className="material-symbols-outlined">star</span>
@@ -128,7 +128,7 @@ export default function DetailedMedia( props ) {
                             <span className="next-episode-banner">Next episode to be aired</span>
                             <span className="next-episode-name">{next_episode_to_air.name}</span>
                             <span className="next-episode-overview">{next_episode_to_air.overview}</span>
-                            <span className="next-episode-episode-number">Èpisode: {next_episode_to_air.episode_number}</span>
+                            <span className="next-episode-episode-number">Episode: {next_episode_to_air.episode_number}</span>
                             <span className="next-episode-season-number">Season: {next_episode_to_air.season_number}</span>
                             <span className="next-episode-air-date">Will be released on: {`${n_e_day}/${n_e_month}/${n_e_year}`}</span>
                         </div>
@@ -190,11 +190,11 @@ export default function DetailedMedia( props ) {
             <div className={`${mediaType}--detailed`}>
                 { media }
                 { isInWatchlist(parseInt(mediaId)) ? deleteMediaBtn : addMediaBtn  }
-                <button tabIndex="3" className={`${mediaType}--back-btn details-btn pop-out`} onClick={ () => back(-1) }>
+                <button className={`${mediaType}--back-btn details-btn pop-out`} onClick={ () => back(-1) }>
                     <span className="material-symbols-outlined">
                         arrow_back
                     </span>
-                    Find a new { mediaType === 'movie' ? 'movie' : 'tv show' }
+                    Back
                 </button>
             </div>
         </main>

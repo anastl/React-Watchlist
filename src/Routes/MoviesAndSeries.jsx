@@ -73,7 +73,7 @@ export default function MoviesAndSeries() {
     return (
             <main>
                 <div className="search--area">
-                    <h1 className="search--title">Search for a {query.movie ? 'Movie' : 'Tv Show'}</h1>
+                    <h1 className="search--title">Search {query.movie ? 'Movie' : 'Tv Show'}s</h1>
                     <form className="form" onSubmit={ (e) => {
                         e.preventDefault()
                         getResults()

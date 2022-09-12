@@ -34,7 +34,8 @@ export default function Media( props ) {
                 <div className="buttons-container">
                     { isInWatchlist(id) ? deleteMediaBtn : addMediaBtn  }
                     <button 
-                    className="show-more-a" 
+                    // className="show-more-a" 
+                    className="pop-out"
                     onClick={() => navigate(`/search/${id}`)}
                     >
                         Show more
