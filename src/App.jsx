@@ -14,7 +14,8 @@ function App() {
       </nav>
 
       <Routes>
-        <Route exact path="/*" element = { <MoviesAndSeries /> } />
+        {/* <Route exact path="/*" element = { <MoviesAndSeries /> } /> */}
+        <Route path="*" element = { <MoviesAndSeries /> } />
         <Route path='watchlist/' element= { <Watchlist />} />
         <Route exact path='search/' element={ <MoviesAndSeries /> } />
         <Route path='search/:mediaId' element={ <DetailedMedia /> } />
