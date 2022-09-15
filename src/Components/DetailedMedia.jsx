@@ -139,8 +139,6 @@ export default function DetailedMedia( props ) {
                     created_by.map( creatorObj => creatorObj.name).join(', ') 
                     : created_by.name
 
-                    console.log( episode_run_time )
-
                 const tvDets = (
                     <>
                         <img alt="" src={imgSrc} className="tv--poster"/>
@@ -163,9 +161,9 @@ export default function DetailedMedia( props ) {
                         <p className="details genres">Genres: { genresNames }</p>
                         { lastEpisodeToAir }
                         { next_episode_to_air != null ? nextEpisodeToAir : '' }
-                        <div className="details tv--creator-container">
+                        {creatorNames && <div className="details tv--creator-container">
                             Creator(s): { creatorNames }
-                        </div>
+                        </div>}
                         <p className="details number-of-episodes">Number of episodes: { number_of_episodes }</p>
                         <p className="details number-of-seasons">Number of seasons: { number_of_seasons }</p>
                         <p className="details origin-country">Origin country: { origin_country }</p>

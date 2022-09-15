@@ -65,6 +65,7 @@ form {
   justify-content: space-around;
 }
 
+
 input[type="text"] {
   border: none;
   border-radius: 10px;
@@ -259,30 +260,19 @@ p {
   background: var(--light-4);
   padding: 1.6rem;
   border-radius: 20px;
-  display: flex;
+  display: grid;
+  gap: .8rem;
   align-items: center;
-  margin: .25rem 0;
-  gap: 1.5rem;
+  grid-template-areas: 
+    'img img title year'
+    'img img genres rating'
+    'img img summary summary'
+    'img img btn btn';
 }
 
 .poster-image {
-  order: 1;
   max-height: 500px;
-}
-
-  /* start movie-info sub-area */
-
-.media-info {
-  order: 2;
-  display: grid;
-  gap: .3rem;
-  align-items: center;
-  grid-template-areas: 
-    'title title title title'
-    'rating rating rating rating'
-    'year genres genres genres'
-    'summary summary summary summary'
-    'btn btn btn btn';
+  grid-area: img;
 }
 
 .card-title {
@@ -297,11 +287,9 @@ p {
 .rating-info {
   grid-area: rating;
   justify-self: center;
-  margin-top: .5rem;
-  margin-bottom: 0;
-  display: flex;
-  align-items: baseline;
-  gap: .2rem;
+  /* display: flex;
+  align-items: center;
+  gap: .2rem; */
 }
 
 .date {
@@ -312,7 +300,6 @@ p {
 
 .genres {
   grid-area: genres;
-  justify-self: right;
   opacity: .875;
 }
 
@@ -329,7 +316,6 @@ p {
   display: flex;
   justify-content: space-between;
 }
-  /* end movie-info sub-area */
 
 /* END MOVIE CARD AREA*/
 
@@ -361,7 +347,6 @@ p {
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
-  /* border: 10px solid #A1A057; */
 }
 /* END DETAILED LAYOUT */
 
@@ -399,9 +384,6 @@ p {
   color: var(--dark-1);
   font-weight: 500;
 }
-/* .back-btn>span {
-  margin-right: .5rem;
-} */
 .movie--title {
   grid-area: title;
   text-transform: uppercase;
@@ -589,28 +571,164 @@ p {
 }
 /* END DETAILED TV SHOW */
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
 
-/************ EXTRAS ************/
 
-  /* --nav-light-color: #d74d6f;
-  --nav-light-color--darker: #a03a54;
-  --nav-light-color--darker--lower-opacity: rgb(160, 58, 84, .5);
-  //--accent-text-lvl-2-light-color: #f5e8ea;
-  --accent-text-lvl-2-light-color: #f4dfe1;
-  --accent-text-lvl-3-light-color: #d6888f;
-  --nav-light-color--lower-opacity: rgb(215, 77, 111, .5);
-  --accent-text-lvl-1-light-color--lower-opacity: rgb(234, 203, 196, .5);
-  --accent-text-lvl-2-light-color--lower-opacity: rgb(244, 223, 225, .5);
-  --accent-text-lvl-3-light-color--lower-opacity: rgb(214, 136, 143, .5); */
+@media screen and (max-width: 500px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+  }
+  .form-container {
+    display: grid;
+    grid-template-areas: 'input input' 'slider btn';
+    grid-template-rows: 2.5rem;
+    align-items: center;
+  }
+  .input-text {
+    grid-area: input;
+  }
+  .slider-label {
+    grid-area: slider;
+    justify-self: left;
+  }
+  .button {
+    grid-area: btn;
+    justify-self: right;
+  }
+  .media-card {
+    background: var(--light-4);
+    padding: 1.6rem;
+    border-radius: 20px;
+    margin: .25rem 0;
+    order: 2;
+    display: grid;
+    gap: .8rem;
+    align-items: center;
+    justify-items: center;
+    grid-template-areas: 
+      'img img img'
+      'title title title'
+      'genres year rating'
+      'summary summary summary'
+      'btn btn btn';
+  }
+  .poster-image {
+    max-height: none;
+  }
+  .buttons-container {
+    margin-top: .3rem;
+    grid-area: btn;
+    display: flex;
+    justify-content: space-between;
+    justify-self: initial;
+    gap: .5rem;
+  }
+  .summary {
+    text-align: center;
+  }
+  .media--details-page {
+    display: block;
+  }
+  .movie--detailed,
+  .tv--detailed {
+    gap: 1rem;
+  }
+  .movie--details,
+  .tv--details,
+  .tv--tagline,
+  .tv--title--original,
+  .tv--creator-container {
+    text-align: center;
+  }
+  .movie--details,
+  .tv--details {
+    font-size: .9rem;
+    line-height: 1.7;
+    letter-spacing: .7px;
+  }
+  .movie--title,
+  .tv--title {
+    font-size: 1.7rem;
+  }
+  .movie--detailed {
+    gap: 1rem;
+    grid-template-areas: 
+    'back_btn back_btn'
+    'button button'
+    'det_img det_img'
+    'title title'
+    'tagline tagline'
+    'runtime runtime'
+    'genres genres'
+    'det_rating website'
+    'rel_date rel_date'
+    'budget budget'
+    'revenue revenue'
+    'summary summary'
+    ;
+  }
+  .movie--watchlist_button,
+  .tv--watchlist_button,
+  .tv--back-btn {
+    width: 100%;
+  }
+  .tv--detailed {
+    place-items: center;
+    grid-template-areas: 
+    'bck_btn'
+    'add_btn'
+    'poster'
+    'name'
+    'og_name'
+    'tagline'
+    'rating'
+    'status'
+    'genres'
+    'runtime'
+    'country' 
+    'website'
+    'creator'
+    'seasons'
+    'episodes'
+    'f_air_date'
+    'l_air_date'
+    'summary'
+    'last_ep'
+    'next_ep'
+    ;
+  }
+  .tv--last-episode-container>*,
+  .tv--next-episode-container>* {
+    text-align: center;
+  }
+  .last-episode-banner,
+  .next-episode-banner { 
+    text-align: center;
+    font-style: normal;
+    opacity: .8;
+  }
+  .tv--last-episode-container {
+    grid-template-areas: 
+    'l_banner l_banner l_banner'
+    'l_title l_title l_title'
+    'l_rating l_rating l_rating'
+    'l_date l_date l_date'
+    'l_season . l_episode'
+    'l_summary l_summary l_summary'
+    ;
+  }
+  .tv--next-episode-container {
+    grid-template-areas: 
+    'n_banner n_banner n_banner'
+    'n_title n_title n_title'
+    'n_season . n_episode'
+    'n_date n_date n_date'
+    'n_summary n_summary n_summary'
+    ;
+  }
+  .next-episode-air-date {
+    font-weight: bolder;
+    font-size: smaller;
+  }
+}

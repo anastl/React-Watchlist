@@ -95,7 +95,7 @@ export default function MoviesAndSeries() {
                                 className="input-text"
                                 type="text" 
                                 name="mediaName" 
-                                placeholder={ query.movie ? "Star Wars, Star, Star Trek"  : "Office, The Office, The Office UK"}
+                                placeholder={ query.movie ? "e.g.: Star Wars, Star, Star Trek"  : "e.g.: Office, The Office, The Office UK"}
                                 value={ query.mediaName } 
                                 onChange={ handleChange }
                                 />

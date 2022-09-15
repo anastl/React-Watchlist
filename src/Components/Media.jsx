@@ -22,28 +22,24 @@ export default function Media( props ) {
 
     return (
         <div className="media-card">
-            <div className="media-info">
-                <h3 className="title card-title">{ title }</h3>
-                <p className="p small date">{ year }</p>
-                <div className="rating-info rating_container">
-                    <span className="material-symbols-outlined">star</span>
-                    <p className="p small">{ rating }/10</p>
-                </div>
-                <p className="p summary">{ newSummary }</p>
-                <p className="p small genres">Genres: { genres }</p>
-                <div className="buttons-container">
-                    { isInWatchlist(id) ? deleteMediaBtn : addMediaBtn  }
-                    <button 
-                    // className="show-more-a" 
-                    className="pop-out"
-                    onClick={() => navigate(`/search/${id}`)}
-                    >
-                        Show more
-                    </button>
-                </div>
-            </div>
             <img className="poster-image" alt="" src={imgSrc} />                             
-
+            <h3 className="title card-title">{ title }</h3>
+            <p className="p small date">{ year }</p>
+            <div className="rating-info rating_container">
+                <span className="material-symbols-outlined">star</span>
+                <p className="p small">{ rating }/10</p>
+            </div>
+            <p className="p summary">{ newSummary }</p>
+            <p className="p small genres">Genres: { genres }</p>
+            <div className="buttons-container">
+                { isInWatchlist(id) ? deleteMediaBtn : addMediaBtn  }
+                <button 
+                className="pop-out"
+                onClick={() => navigate(`/search/${id}`)}
+                >
+                    Show more
+                </button>
+            </div>
         </div>
     )
 }
